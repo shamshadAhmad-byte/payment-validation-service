@@ -1,6 +1,5 @@
 package com.example.paymentvalidationservice.controller;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,10 +20,8 @@ public class PaymentController {
 	}
 
 	@PostMapping
-	public String createPayment(
-			@RequestBody PaymentRequest paymentRequest,
-			Authentication authentication) {
-		return payment.createPayment(paymentRequest, authentication.getName());
+	public String createPayment(@RequestBody PaymentRequest paymentRequest) {
+		return payment.createPayment(paymentRequest);
 	}
 
 	@GetMapping
