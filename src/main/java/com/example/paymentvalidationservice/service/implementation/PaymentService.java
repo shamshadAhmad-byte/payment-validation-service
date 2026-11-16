@@ -24,6 +24,9 @@ public class PaymentService implements Payment {
             throw new IllegalArgumentException("Payment request must not be null");
         }
         log.info("Payment ID: {}", paymentRequest);
+        // check 1
+        // check 2
+        
         return "Payment processed successfully";
     }
 }
