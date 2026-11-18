@@ -9,8 +9,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 
+import com.example.paymentvalidationservice.constant.ErrorCodeEnum;
 import com.example.paymentvalidationservice.constant.ValidatorRulEnum;
 import com.example.paymentvalidationservice.dto.PaymentRequest;
+import com.example.paymentvalidationservice.exception.ValidationException;
 import com.example.paymentvalidationservice.service.interfaces.Payment;
 
 @Service
@@ -30,11 +32,13 @@ public class PaymentService implements Payment, ApplicationContextAware {
     public String createPayment(PaymentRequest paymentRequest) {
         log.info("Processing payment");
         if (paymentRequest == null) {
-            throw new IllegalArgumentException("Payment request must not be null");
+            ErrorCodeEnum error = ErrorCodeEnum.INVALID_REQUEST;
+            throw new ValidationException(error.getErrorCode(), error.getErrorMessage(), 400);
         }
         log.info("Payment ID: {}", paymentRequest);
         if (applicationContext == null) {
-            throw new IllegalStateException("Application context is not initialized");
+            ErrorCodeEnum error = ErrorCodeEnum.APPLICATION_CONTEXT_NOT_INITIALIZED;
+            throw new ValidationException(error.getErrorCode(), error.getErrorMessage(), 500);
         }
         List<String> validatorNames = List.of(rulelist.split(","));
         validatorNames.forEach(validatorName -> {

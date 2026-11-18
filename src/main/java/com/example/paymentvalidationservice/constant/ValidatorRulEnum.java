@@ -14,7 +14,7 @@ public enum ValidatorRulEnum {
 
     ValidatorRulEnum(String validatorName, Class<? extends Validator> validatorClass) {
         this.validatorName = validatorName;
-        this.validatorClass = validatorClass;
+        this.validatorClass = validatorClass; 
     }
 
     public String getValidatorName() {
