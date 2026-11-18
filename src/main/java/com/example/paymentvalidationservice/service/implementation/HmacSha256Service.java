@@ -11,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.example.paymentvalidationservice.constant.ErrorCodeEnum;
+import com.example.paymentvalidationservice.exception.ValidationException;
 import com.example.paymentvalidationservice.service.interfaces.HmacSHA256;
 
 @Service
@@ -30,7 +32,8 @@ public class HmacSha256Service implements HmacSHA256 {
             return Base64.getEncoder().encodeToString(hash);
         } catch (GeneralSecurityException e) {
             log.error("Error generating HMAC-SHA256 signature", e);
-            throw new IllegalStateException("Unable to generate HMAC-SHA256 signature", e);
+            ErrorCodeEnum error = ErrorCodeEnum.HMAC_GENERATION_FAILED;
+            throw new ValidationException(error.getErrorCode(), error.getErrorMessage(), 500);
         }
 
     }
