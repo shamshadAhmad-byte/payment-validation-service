@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import com.example.paymentvalidationservice.dto.PaymentRequest;
 import com.example.paymentvalidationservice.service.interfaces.Validator;
 
-@Service
-public class ValidateCheck2 implements Validator {
+@Service("CHECK2")
+public class ValidatorCheck2 implements Validator {
 
-    private static final Logger log = LoggerFactory.getLogger(ValidateCheck2.class);
+    private static final Logger log = LoggerFactory.getLogger(ValidatorCheck2.class);
 
     @Override
     public void validate(PaymentRequest paymentRequest) {
