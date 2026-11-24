@@ -1,12 +1,12 @@
 package com.example.paymentvalidationservice.constant;
 
-import com.example.paymentvalidationservice.service.implementation.validator.ValidatorCheck1;
+import com.example.paymentvalidationservice.service.implementation.validator.DuplicateTxnValidation;
 import com.example.paymentvalidationservice.service.implementation.validator.ValidatorCheck2;
 import com.example.paymentvalidationservice.service.interfaces.Validator;
 
 public enum ValidatorRulEnum {
 
-    CHECK1("CHECK1", ValidatorCheck1.class),
+    CHECK1("duplicateTxn", DuplicateTxnValidation.class),
     CHECK2("CHECK2", ValidatorCheck2.class);
 
     private final String validatorName;

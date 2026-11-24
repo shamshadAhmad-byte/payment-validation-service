@@ -15,7 +15,10 @@ import com.example.paymentvalidationservice.dto.PaymentRequest;
 import com.example.paymentvalidationservice.exception.ValidationException;
 import com.example.paymentvalidationservice.service.interfaces.Payment;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class PaymentService implements Payment, ApplicationContextAware {
 
     private static final Logger log = LoggerFactory.getLogger(PaymentService.class);

@@ -8,9 +8,9 @@ import com.example.paymentvalidationservice.dto.PaymentRequest;
 import com.example.paymentvalidationservice.service.interfaces.Validator;
 
 @Service("CHECK1")
-public class ValidatorCheck1 implements Validator {
+public class DuplicateTxnValidation implements Validator {
 
-    private static final Logger log = LoggerFactory.getLogger(ValidatorCheck1.class);
+    private static final Logger log = LoggerFactory.getLogger(DuplicateTxnValidation.class);
 
     @Override
     public void validate(PaymentRequest paymentRequest) {
